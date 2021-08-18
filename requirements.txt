@@ -1,0 +1,7 @@
+Flask==2.0.1
+pytest
+flask_swagger
+flask-swagger-ui
+sqlalchemy
+flask-sqlalchemy
+flask_migrate
