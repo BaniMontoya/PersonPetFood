@@ -1,8 +1,9 @@
 from flask import jsonify
-from random import choice
 from flask_classful import FlaskView
 from flask import Flask, jsonify
 from models import Person, Pet, Food, db, app
+import secrets
+
 res = [
     "hello world"
 ]
@@ -43,18 +44,18 @@ class PersonView(FlaskView):
 
     # Dar comida a una mascota (La mascota solo aceptará la comida que le gusta, no se acepta comida)
     def give_food_for_an_pet(self):
-        return choice(res)
+        return secrets.SystemRandom().choice(res)
 
     # Preparar comida
     def cook_the_food(self):
-        return choice(res)
+        return secrets.SystemRandom().choice(res)
 
     # Obtener una nueva mascota
     def get_a_new_pet(self):
         person = Person(name="Bani", country="Brasil")
         db.session.add(person)
         db.session.commit()
-        return choice(res)
+        return secrets.SystemRandom().choice(res)
 
     '''
     5:# Revisar si la comida se ha podrido (verificar fecha de caducidad y podrir la comida si se paso)
@@ -82,7 +83,7 @@ class PetView(FlaskView):
     """
     
     def eat_food(self):  # Comer comida (Si come comida podrida, se le restara 40 de salud, sino aumentar 70 de salud)
-        return choice(res)
+        return secrets.SystemRandom().choice(res)
 
     '''
     2:# Saludar a la persona que lo cuida diciendo su comida favorita 
@@ -110,7 +111,7 @@ class FoodView(FlaskView):
     """
     
     def rotting_food(self):  # Podrirse (La comida se pudre)
-        return choice(res)
+        return secrets.SystemRandom().choice(res)
 
     '''
     2:# Información (Describe quien lo preparó, y que mascotas pueden alimentarse de esta)
